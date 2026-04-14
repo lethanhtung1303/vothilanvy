@@ -4,15 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>CV - Võ Thị Lan Vy</title>
-        <!-- Đổi sang font chữ Inter: Chuyên nghiệp, chỉn chu, rõ nét -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
-
-        <!-- Tải thư viện Icon -->
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -22,24 +19,20 @@
 
         <style>
             :root {
-                /* Màu sắc nhận diện thương hiệu Vietcombank */
-                --primary-color: #005a3c; /* Xanh đậm */
-                --secondary-color: #7ab800; /* Xanh lá mạ */
-                --bg-light-green: #e9f2eb; /* Xanh nhạt làm nền/icon */
+                --primary-color: #005a3c;
+                --secondary-color: #7ab800;
+                --bg-light-green: #e9f2eb;
                 --left-bg: #f4f8f4;
                 --text-dark: #1a1a1a;
                 --text-gray: #4a4a4a;
                 --white: #ffffff;
             }
-
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
-
             body {
-                /* Sử dụng font Inter */
                 font-family: 'Inter', sans-serif;
                 background-color: #525659;
                 display: flex;
@@ -50,8 +43,6 @@
                 min-height: 100vh;
                 overflow-y: auto;
             }
-
-            /* --- CẤU HÌNH TRANG A4 --- */
             .cv-page {
                 width: 210mm;
                 min-height: 297mm;
@@ -61,8 +52,6 @@
                 display: flex;
                 position: relative;
             }
-
-            /* Dải màu trang trí dành riêng cho HIỂN THỊ TRÊN MÀN HÌNH */
             .vcb-header,
             .vcb-footer {
                 position: absolute;
@@ -82,14 +71,10 @@
             .vcb-footer {
                 bottom: 0;
             }
-
-            /* Ẩn dải màu in chuyên dụng khi xem trên web */
             .print-header,
             .print-footer {
                 display: none;
             }
-
-            /* Cột bên trái */
             .left-column {
                 width: 38%;
                 background-color: var(--left-bg);
@@ -99,8 +84,6 @@
                 flex-direction: column;
                 gap: 20px;
             }
-
-            /* Cột bên phải */
             .right-column {
                 width: 62%;
                 padding: 45px 40px 60px 40px;
@@ -108,8 +91,6 @@
                 flex-direction: column;
                 gap: 20px;
             }
-
-            /* --- PHẦN HÌNH ẢNH & TIÊU ĐỀ (Cột trái) --- */
             .profile-pic-container {
                 width: 170px;
                 height: 170px;
@@ -121,18 +102,15 @@
                 overflow: hidden;
                 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             }
-
             .profile-pic-container img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
-
             .header-info {
                 text-align: center;
                 margin-bottom: 10px;
             }
-
             .header-info h1 {
                 font-size: 28px;
                 font-weight: 700;
@@ -141,7 +119,6 @@
                 letter-spacing: 1.5px;
                 margin-bottom: 10px;
             }
-
             .header-info h2 {
                 font-size: 13px;
                 font-weight: 700;
@@ -154,8 +131,6 @@
                 letter-spacing: 0.5px;
                 display: inline-block;
             }
-
-            /* --- TIÊU ĐỀ CÁC MỤC --- */
             .section-title {
                 font-size: 15px;
                 font-weight: 700;
@@ -171,7 +146,6 @@
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                 white-space: nowrap;
             }
-
             .section-title-right {
                 font-size: 19px;
                 font-weight: 700;
@@ -183,7 +157,6 @@
                 position: relative;
                 letter-spacing: 0.5px;
             }
-
             .section-title-right::after {
                 content: '';
                 position: absolute;
@@ -197,26 +170,21 @@
                     var(--secondary-color) 40%
                 );
             }
-
-            /* --- NỘI DUNG CỘT TRÁI --- */
             .objective-text {
                 font-size: 13px;
                 line-height: 1.6;
                 text-align: justify;
                 color: var(--text-dark);
             }
-
             .skills-list {
                 list-style: none;
                 font-size: 13px;
             }
-
             .skills-list li {
                 margin-bottom: 10px;
                 position: relative;
                 padding-left: 20px;
             }
-
             .skills-list li::before {
                 content: '•';
                 color: var(--secondary-color);
@@ -225,19 +193,16 @@
                 left: 0;
                 top: -2px;
             }
-
             .contact-list {
                 list-style: none;
                 font-size: 12.5px;
             }
-
             .contact-list li {
                 display: flex;
                 align-items: center;
                 margin-bottom: 12px;
                 line-height: 1.4;
             }
-
             .contact-list li i {
                 background-color: var(--bg-light-green);
                 color: var(--primary-color);
@@ -250,20 +215,16 @@
                 margin-right: 10px;
                 flex-shrink: 0;
             }
-
-            /* --- NỘI DUNG CỘT PHẢI --- */
             .timeline {
                 display: flex;
                 flex-direction: column;
                 gap: 14px;
             }
-
             .timeline-item {
                 position: relative;
                 padding-left: 22px;
                 border-left: 2px solid #c2d6bb;
             }
-
             .timeline-item::before {
                 content: '';
                 position: absolute;
@@ -277,7 +238,6 @@
                 box-sizing: content-box;
                 box-shadow: 0 0 0 1px var(--primary-color);
             }
-
             .job-title {
                 font-size: 15px;
                 font-weight: 700;
@@ -285,7 +245,6 @@
                 margin-bottom: 3px;
                 text-transform: uppercase;
             }
-
             .company-date {
                 font-size: 13px;
                 font-weight: 500;
@@ -293,25 +252,20 @@
                 margin-bottom: 6px;
                 font-style: italic;
             }
-
             .company-date span {
                 color: var(--secondary-color);
                 font-weight: 700;
             }
-
             .timeline-item ul {
                 padding-left: 18px;
                 font-size: 13.5px;
                 line-height: 1.6;
                 color: var(--text-gray);
             }
-
             .timeline-item ul li {
                 margin-bottom: 5px;
                 text-align: justify;
             }
-
-            /* Hoạt động & Chứng chỉ */
             .list-item-simple {
                 padding-left: 15px;
                 font-size: 13.5px;
@@ -320,7 +274,6 @@
                 position: relative;
                 color: var(--text-gray);
             }
-
             .list-item-simple::before {
                 content: '•';
                 color: var(--secondary-color);
@@ -329,8 +282,6 @@
                 left: 0;
                 top: -2px;
             }
-
-            /* --- CẤU HÌNH KHI IN (CTRL + P) --- */
             @media print {
                 @page {
                     size: A4;
@@ -342,7 +293,6 @@
                     padding: 0;
                     height: auto;
                 }
-
                 body::before {
                     content: '';
                     position: fixed;
@@ -354,15 +304,10 @@
                     border-right: 2px solid #dbe8dd;
                     z-index: -1;
                 }
-
-                /* --- XỬ LÝ HEADER/FOOTER KHI IN --- */
-                /* 1. Ẩn dải màu hiển thị trên màn hình để tránh chồng chéo */
                 .vcb-header,
                 .vcb-footer {
                     display: none !important;
                 }
-
-                /* 2. Hiển thị dải màu in chuyên dụng được đặt sát vào Body */
                 .print-header,
                 .print-footer {
                     display: block !important;
@@ -385,7 +330,6 @@
                 .print-footer {
                     bottom: 0;
                 }
-
                 .cv-page {
                     width: 100%;
                     margin: 0;
@@ -394,18 +338,15 @@
                     min-height: 297mm;
                     background-color: transparent;
                 }
-
                 .left-column {
                     background-color: transparent;
                     border-right: none;
                     gap: 0;
                 }
-
                 .left-column .header-info,
                 .left-column .section {
                     padding-top: 25px;
                 }
-
                 .right-column {
                     gap: 0;
                     padding-top: 25px;
@@ -413,7 +354,6 @@
                 .right-column .section {
                     padding-top: 20px;
                 }
-
                 .timeline {
                     gap: 0;
                 }
@@ -423,13 +363,11 @@
                 .timeline-item + .timeline-item::before {
                     top: 19px;
                 }
-
                 .section,
                 .timeline-item {
                     page-break-inside: avoid;
                     break-inside: avoid;
                 }
-
                 .section-title,
                 .section-title-right,
                 .job-title,
@@ -443,82 +381,79 @@
         </style>
     </head>
     <body>
-        <!-- Dải màu chuyên dụng để ghim cực kỳ chắc chắn lên giấy in -->
         <div class="print-header"></div>
         <div class="print-footer"></div>
-
         <div class="cv-page">
-            <!-- Dải màu dành cho xem trên màn hình web -->
             <div class="vcb-header"></div>
-
-            <!-- ================= CỘT TRÁI ================= -->
             <div class="left-column">
                 <div class="profile-pic-container">
-                    <img src="_avt.jpg" alt="Ảnh đại diện" />
+                    <img
+                        src="https://raw.githubusercontent.com/lethanhtung1303/vothilanvy/refs/heads/main/_avt.jpg"
+                        alt="Ảnh đại diện"
+                        onerror="
+                            this.src =
+                                'https://placehold.co/170x170?text=Avatar'
+                        "
+                    />
                 </div>
-
                 <div class="header-info">
                     <h1>VÕ THỊ<br />LAN VY</h1>
-                    <h2>KẾ TOÁN /<br />GIAO DỊCH VIÊN</h2>
+                    <h2>CHUYÊN VIÊN KHÁCH HÀNG</h2>
                 </div>
-
                 <div class="section">
                     <div class="section-title">Mục tiêu nghề nghiệp</div>
                     <div class="objective-text">
-                        Với hơn 3 năm gắn bó và phát triển tại Vietcombank qua
-                        các vị trí Điều phối viên và Chuyên viên tư vấn (BPO),
-                        tôi đã tích lũy nền tảng vững chắc về xử lý nghiệp vụ và
-                        chăm sóc khách hàng.
+                        Với hơn 3 năm kinh nghiệm thực tiễn tại Vietcombank, từ
+                        vai trò Điều phối viên đến Chuyên viên tư vấn (BPO), tôi
+                        đã xây dựng tư duy nhạy bén trong việc phát triển thị
+                        trường và quản lý rủi ro tín dụng.
                         <b
-                            >Mục tiêu lớn nhất hiện tại của tôi là được thử sức
-                            và khẳng định năng lực ở vị trí Chuyên viên Kế
-                            toán/Giao dịch viên tại khu vực TP.HCM.</b
-                        >
-                        Sự thay đổi này không chỉ thỏa mãn khát vọng mở rộng
-                        chuyên môn trong cùng hệ thống, mà còn giúp tôi rút ngắn
-                        khoảng cách địa lý về quê nhà, từ đó ổn định cuộc sống
-                        để toàn tâm cống hiến dài hạn cho ngân hàng.
+                            >Mục tiêu hiện tại của tôi là trở thành Chuyên viên
+                            khách hàng tại Chi nhánh Tân Định</b
+                        >, đóng góp trực tiếp vào mục tiêu tăng trưởng quy mô
+                        tín dụng và huy động bền vững của đơn vị. Việc dịch
+                        chuyển về địa bàn TP.HCM không chỉ là bước tiến sự
+                        nghiệp mà còn giúp tôi ổn định cuộc sống để an tâm cống
+                        hiến lâu dài cùng hệ thống Vietcombank.
                     </div>
                 </div>
-
                 <div class="section">
-                    <div class="section-title">Kỹ năng</div>
+                    <div class="section-title">Kỹ năng chuyên môn</div>
                     <ul class="skills-list">
-                        <li>Nghiệp vụ Kế toán & Giao dịch ngân hàng</li>
-                        <li>Tư vấn & Bán hàng chéo (Cross-selling)</li>
-                        <li>Chăm sóc khách hàng (KHCN & KHDN)</li>
+                        <li>Phát triển & Quản lý danh mục khách hàng</li>
+                        <li>Thẩm định tín dụng & Phân tích tài chính</li>
+                        <li>Kỹ năng đàm phán & Chốt hợp đồng</li>
+                        <li>Am hiểu sản phẩm vay, tiền gửi, bảo hiểm</li>
+                        <li>Quản lý rủi ro & Xử lý nợ</li>
                         <li>Thành thạo hệ thống Core Banking</li>
-                        <li>Giao tiếp & Xử lý tình huống linh hoạt</li>
-                        <li>Quản lý thời gian & Làm việc nhóm</li>
                     </ul>
                 </div>
-
                 <div class="section">
                     <div class="section-title">Thông tin liên hệ</div>
                     <ul class="contact-list">
                         <li>
-                            <i class="fas fa-venus"></i>
-                            <span>Giới tính: NỮ</span>
+                            <i class="fas fa-venus"></i
+                            ><span>Giới tính: NỮ</span>
                         </li>
                         <li>
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Sinh ngày: 08/07/2000</span>
+                            <i class="fas fa-calendar-alt"></i
+                            ><span>Sinh ngày: 08/07/2000</span>
                         </li>
                         <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>Điện thoại: 0375137185</span>
+                            <i class="fas fa-phone-alt"></i
+                            ><span>Điện thoại: 0375137185</span>
                         </li>
                         <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>Email: vothilanvy0807@gmail.com</span>
+                            <i class="fas fa-envelope"></i
+                            ><span>Email: vothilanvy0807@gmail.com</span>
                         </li>
                         <li>
-                            <i class="fas fa-home"></i>
-                            <span>Quê quán: Thạnh Phú, Bến Tre</span>
+                            <i class="fas fa-home"></i
+                            ><span>Quê quán: Thạnh Phú, Bến Tre</span>
                         </li>
                         <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span
+                            <i class="fas fa-map-marker-alt"></i
+                            ><span
                                 >Chỗ ở hiện tại: Phước Thái, Long Thành, Đồng
                                 Nai</span
                             >
@@ -526,8 +461,6 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- ================= CỘT PHẢI ================= -->
             <div class="right-column">
                 <div class="section">
                     <h3 class="section-title-right">Kinh nghiệm làm việc</h3>
@@ -541,33 +474,46 @@
                                     >NGÂN HÀNG TMCP NGOẠI THƯƠNG VN
                                     (VIETCOMBANK)</span
                                 >
-                                - CN NHƠN TRẠCH (PGD Phước Thái) | 24/12/2024 -
-                                Hiện tại
+                                - CN NHƠN TRẠCH | 24/12/2024 - Hiện tại
                             </div>
                             <ul>
                                 <li>
-                                    Thực hiện tác nghiệp tại quầy: Mở CIF, tài
-                                    khoản, ngân hàng điện tử, xác thực eKYC và
-                                    xử lý các dịch vụ gia tăng cho khách hàng.
+                                    Trực tiếp triển khai kế hoạch kinh doanh, tư
+                                    vấn toàn diện các giải pháp tài chính (tín
+                                    dụng, huy động vốn, thanh toán, thẻ, ngoại
+                                    tệ...) cho tệp Khách hàng cá nhân (đặc biệt
+                                    phân khúc Priority) và Khách hàng Doanh
+                                    nghiệp (SMEs).
+                                </li>
+                                <li>
+                                    Chủ động nghiên cứu thị trường, đánh giá
+                                    tiềm năng địa bàn để tiếp cận và mở rộng
+                                    mạng lưới khách hàng mới. Phối hợp chặt chẽ
+                                    với các bộ phận liên quan để đẩy mạnh bán
+                                    chéo (cross-selling) sản phẩm dịch vụ.
+                                </li>
+                                <li>
+                                    Quản lý danh mục khách hàng chuyên sâu: kiểm
+                                    soát rủi ro, duy trì liên lạc thường xuyên
+                                    nắm bắt tình hình hoạt động kinh doanh và
+                                    đáp ứng kịp thời các nhu cầu dịch vụ theo
+                                    tiêu chuẩn VCB.
+                                </li>
+                                <li>
+                                    Trực tiếp tác nghiệp tại quầy: Tiếp nhận và
+                                    xử lý yêu cầu mở CIF, tài khoản thanh
+                                    toán/tiết kiệm, ngân hàng điện tử, xác thực
+                                    trực tiếp đối với khách hàng eKYC và luân
+                                    chuyển hồ sơ phát hành thẻ.
                                 </li>
                                 <li>
                                     Đảm nhiệm vai trò Thủ quỹ Tổ ATM: Quản lý
-                                    tiếp quỹ, kiểm quỹ, nạp tiền dự phòng và
-                                    trực tiếp xử lý sự cố máy ATM tại PGD.
-                                </li>
-                                <li>
-                                    Tư vấn và bán chéo sản phẩm (huy động vốn,
-                                    tín dụng, thanh toán, thẻ...) cho KHCN (đặc
-                                    biệt KH Priority) và KH SMEs.
-                                </li>
-                                <li>
-                                    Quản lý rủi ro, duy trì quan hệ danh mục
-                                    khách hàng hiện hữu và nghiên cứu thị
-                                    trường, mở rộng mạng lưới khách hàng mới.
+                                    công tác tiếp quỹ, kiểm quỹ, nạp tiền dự
+                                    phòng và trực tiếp xử lý các sự cố máy ATM
+                                    tại PGD nhằm đảm bảo an toàn kho quỹ.
                                 </li>
                             </ul>
                         </div>
-
                         <div class="timeline-item">
                             <div class="job-title">
                                 CỘNG TÁC VIÊN / ĐIỀU PHỐI VIÊN
@@ -581,23 +527,25 @@
                             </div>
                             <ul>
                                 <li>
-                                    In sổ phụ cho các khách hàng doanh nghiệp.
+                                    Trực tiếp phân luồng, điều phối khách hàng
+                                    tại sảnh giao dịch, đảm bảo trật tự, tối ưu
+                                    hóa thời gian chờ và mang lại trải nghiệm
+                                    dịch vụ chuyên nghiệp nhất cho khách hàng.
                                 </li>
                                 <li>
-                                    Hướng dẫn khách hàng điền form để thực hiện
-                                    giao dịch nhanh chóng.
+                                    Hướng dẫn khách hàng hoàn thiện hồ sơ, biểu
+                                    mẫu trước khi giao dịch; giải đáp các thắc
+                                    mắc về sản phẩm và quy trình nghiệp vụ cơ
+                                    bản.
                                 </li>
                                 <li>
-                                    Thực hiện và giải đáp thắc mắc các giao dịch
-                                    giản đơn.
-                                </li>
-                                <li>
-                                    Điều phối khách hàng đến các quầy thực hiện
-                                    giao dịch.
+                                    Thực hiện các tác nghiệp hỗ trợ như in sổ
+                                    phụ cho Khách hàng Doanh nghiệp, góp phần
+                                    đẩy nhanh tốc độ xử lý giao dịch tại quầy
+                                    của Giao dịch viên.
                                 </li>
                             </ul>
                         </div>
-
                         <div class="timeline-item">
                             <div class="job-title">NHÂN VIÊN TUYỂN DỤNG</div>
                             <div class="company-date">
@@ -606,20 +554,14 @@
                             </div>
                             <ul>
                                 <li>
-                                    Đăng tin tuyển dụng tại các trang web và
-                                    mạng xã hội.
+                                    Sàng lọc CV, liên hệ ứng viên và thực hiện
+                                    phỏng vấn sơ bộ để đánh giá tiềm năng nhân
+                                    sự.
                                 </li>
-                                <li>Sàng lọc và lựa chọn các CV chất lượng.</li>
-                                <li>
-                                    Liên hệ ứng viên và tiến hành phỏng vấn sơ
-                                    bộ.
-                                </li>
-                                <li>Đánh giá và nhận xét ứng viên.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
                 <div class="section">
                     <h3 class="section-title-right">Quá trình học vấn</h3>
                     <div class="timeline">
@@ -628,87 +570,74 @@
                                 ĐẠI HỌC TÀI CHÍNH - MARKETING
                             </div>
                             <div class="company-date">
-                                Phó Bí thư của Chi đoàn | Tốt nghiệp 15/01/2023
+                                Phó Bí thư Chi đoàn | Tốt nghiệp 15/01/2023
                             </div>
                             <ul>
-                                <li>Ngành Quản trị kinh doanh.</li>
-                                <li>Xếp loại: Khá.</li>
                                 <li>
-                                    Tích cực tham gia các hoạt động do đoàn,
-                                    trường đề ra.
+                                    Ngành Quản trị kinh doanh. Xếp loại: Khá.
+                                </li>
+                                <li>
+                                    Hoàn thành đúng hạn chương trình đào tạo với
+                                    nền tảng kinh tế vững chắc.
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
                 <div class="section">
-                    <h3 class="section-title-right">Khen thưởng</h3>
+                    <h3 class="section-title-right">Khen thưởng tiêu biểu</h3>
                     <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="job-title">
-                                CÁN BỘ TIÊU BIỂU "THI ĐUA DIGIBIZ"
-                            </div>
-                            <div class="company-date">
-                                <span
-                                    >Ngân hàng TMCP Ngoại thương VN
-                                    (Vietcombank) - Chi nhánh Nhơn Trạch</span
-                                >
-                                | Năm 2025
-                            </div>
-                            <ul>
-                                <li>
-                                    Ghi nhận thành tích xuất sắc và sự đóng góp
-                                    tại PGD Phước Thái.
-                                </li>
-                            </ul>
-                        </div>
-
                         <div class="timeline-item">
                             <div class="job-title">
                                 CÁN BỘ TIÊU BIỂU PHÁT TRIỂN "KHÁCH HÀNG SMEs HĐV
                                 MỚI"
                             </div>
                             <div class="company-date">
-                                <span
-                                    >Ngân hàng TMCP Ngoại thương VN
-                                    (Vietcombank) - Chi nhánh Nhơn Trạch</span
-                                >
-                                | 06 tháng đầu năm 2025
+                                Vietcombank - CN Nhơn Trạch | 06 tháng đầu năm
+                                2025
                             </div>
                             <ul>
                                 <li>
-                                    Ghi nhận thành tích xuất sắc và sự đóng góp
-                                    tại PGD Phước Thái.
+                                    Thành tích xuất sắc trong công tác tìm kiếm
+                                    và phát triển khách hàng doanh nghiệp vừa và
+                                    nhỏ.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="job-title">
+                                CÁN BỘ TIÊU BIỂU "THI ĐUA DIGIBIZ"
+                            </div>
+                            <div class="company-date">
+                                Vietcombank - CN Nhơn Trạch | Năm 2025
+                            </div>
+                            <ul>
+                                <li>
+                                    Ghi nhận sự đóng góp tích cực trong việc đẩy
+                                    mạnh dịch vụ ngân hàng số cho khách hàng
+                                    doanh nghiệp.
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
                 <div class="section" style="display: flex; gap: 30px">
+                    <div style="flex: 1">
+                        <h3 class="section-title-right">Chứng chỉ</h3>
+                        <div class="list-item-simple">Chứng chỉ TOEIC.</div>
+                        <div class="list-item-simple">Chứng chỉ MOS.</div>
+                    </div>
                     <div style="flex: 1">
                         <h3 class="section-title-right">Hoạt động</h3>
                         <div class="list-item-simple">
-                            Tham gia cuộc thi "Tiếp sức vũ trang" do trường tổ
-                            chức vào tháng 06/2019.
+                            Giải chạy 60 năm Vietcombank.
                         </div>
                         <div class="list-item-simple">
-                            Tham gia "Giải chạy 60 năm Vietcombank - Vạn trái
-                            tim - Một niềm tin" vào ngày 12/03/2023.
+                            Cuộc thi "Tiếp sức vũ trang".
                         </div>
-                    </div>
-
-                    <div style="flex: 1">
-                        <h3 class="section-title-right">Chứng chỉ</h3>
-                        <div class="list-item-simple">
-                            Chứng chỉ TOEIC 2022.
-                        </div>
-                        <div class="list-item-simple">Chứng chỉ MOS 2022.</div>
                     </div>
                 </div>
             </div>
-
             <div class="vcb-footer"></div>
         </div>
     </body>

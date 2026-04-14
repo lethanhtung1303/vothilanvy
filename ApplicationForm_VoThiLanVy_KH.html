@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đơn Dự Tuyển Vietcombank - Võ Thị Lan Vy</title>
+        <style>
+            :root {
+                --border-color: #000;
+                --text-color: #000;
+                --vcb-green: #008c3a;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: 'Times New Roman', Times, serif;
+                /* BẠN CÓ THỂ CHỈNH CỠ CHỮ NHỎ HƠN Ở ĐÂY:
+                   Ví dụ: 10pt, 10.5pt. Mặc định đang là 11pt */
+                font-size: 10pt;
+                color: var(--text-color);
+                background-color: #525659;
+                display: flex;
+                justify-content: center;
+                padding: 20px 0;
+                line-height: 1.3;
+
+                /* Ép trình duyệt in màu nền */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .a4-page {
+                width: 210mm;
+                min-height: 297mm;
+                background-color: #fff;
+                padding: 20mm;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            }
+
+            /* --- HEADER --- */
+            .header-container {
+                display: flex;
+                margin-bottom: 20px;
+            }
+
+            .avatar-box {
+                width: 30mm;
+                height: 40mm;
+                border: 1px solid #000;
+                margin-right: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+
+            .avatar-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .title-box {
+                flex: 1;
+                text-align: center;
+                padding-top: 10px;
+            }
+
+            .bank-name {
+                margin-bottom: 12px;
+            }
+
+            .bank-name img {
+                height: 35px; /* Kích thước logo */
+                object-fit: contain;
+            }
+
+            .form-title {
+                font-size: 16pt;
+                font-weight: bold;
+                margin-bottom: 12px;
+            }
+
+            .apply-info {
+                margin: 0 auto;
+                width: fit-content;
+                text-align: left;
+                font-weight: bold;
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+
+            /* --- SECTIONS --- */
+            .section-title {
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-top: 15px;
+                margin-bottom: 8px;
+                font-size: 11pt;
+                color: var(--vcb-green);
+                text-decoration: underline;
+            }
+
+            th.table-section-title {
+                text-align: center !important;
+                color: var(--vcb-green);
+                background-color: #e8f5e9 !important; /* Màu nền xanh lá nhạt */
+                font-size: 11.5pt;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-decoration: none !important; /* Bỏ gạch chân cho đẹp */
+                border: 1px solid var(--border-color) !important; /* Hiện lại viền bảng */
+                padding: 8px !important;
+
+                /* Đảm bảo khi in vẫn giữ màu nền */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .info-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 20px;
+                margin-bottom: 15px;
+            }
+
+            .info-row {
+                display: flex;
+                margin-bottom: 6px;
+            }
+
+            .info-row-full {
+                grid-column: span 2;
+            }
+
+            .label {
+                font-weight: normal;
+                margin-right: 5px;
+            }
+
+            .value {
+                font-weight: bold;
+            }
+
+            .checkbox-group span {
+                margin-right: 15px;
+            }
+
+            /* --- TABLES --- */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 15px;
+                font-size: 11pt;
+            }
+
+            th,
+            td {
+                border: 1px solid var(--border-color);
+                padding: 6px 8px;
+                text-align: left;
+                vertical-align: top;
+            }
+
+            th {
+                text-align: center;
+                font-weight: bold;
+                /* Bỏ màu nền để giống hệt bản PDF gốc */
+            }
+
+            ul.task-list {
+                padding-left: 15px;
+                margin: 0;
+            }
+
+            ul.task-list li {
+                margin-bottom: 3px;
+                text-align: justify;
+            }
+
+            /* --- FOOTER / SIGNATURE --- */
+            .signature-section {
+                margin-top: 20px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .signature-box {
+                text-align: center;
+                width: 250px;
+            }
+
+            .signature-img {
+                height: 70px;
+                margin: 10px 0;
+            }
+
+            .signature-name {
+                font-weight: bold;
+            }
+
+            /* --- IN ẤN --- */
+            @media print {
+                body {
+                    background-color: transparent;
+                    padding: 0;
+                    margin: 0;
+                }
+                .a4-page {
+                    box-shadow: none;
+                    margin: 0;
+                    padding: 0; /* Bỏ padding đi vì @page đã lo khoảng cách an toàn */
+                    width: 100%;
+                }
+                @page {
+                    size: A4;
+                    margin: 20mm 15mm; /* Căn lề chuẩn: Trên/Dưới chừa 20mm, Trái/Phải chừa 15mm */
+                }
+
+                /* Tối ưu ngắt trang tự động */
+                .section-title {
+                    page-break-after: avoid; /* Không ngắt trang ngay sau tiêu đề */
+                    break-after: avoid;
+                }
+                table {
+                    page-break-inside: auto; /* Cho phép bảng tự qua trang nếu quá dài */
+                }
+
+                /* Thêm .keep-together vào danh sách không được phép bị ngắt giữa chừng */
+                tr,
+                td,
+                th,
+                .info-grid,
+                .keep-together {
+                    page-break-inside: avoid; /* Tránh cắt đôi một hàng/nội dung */
+                    break-inside: avoid;
+                }
+                thead {
+                    display: table-header-group; /* Tự động lặp lại header của bảng khi sang trang mới */
+                }
+
+                /* Lớp ngắt trang thủ công */
+                .page-break {
+                    page-break-before: always;
+                    break-before: page;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="a4-page">
+            <!-- HEADER -->
+            <div class="header-container">
+                <div class="avatar-box">
+                    <img
+                        src="https://raw.githubusercontent.com/lethanhtung1303/vothilanvy/refs/heads/main/_avt.jpg"
+                        alt="Ảnh đại diện"
+                        onerror="
+                            this.src =
+                                'https://placehold.co/170x170?text=Avatar'
+                        "
+                    />
+                </div>
+                <div class="title-box">
+                    <div class="bank-name">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/vi/9/9d/Vietcombank_Logo.svg"
+                            alt="Vietcombank Logo"
+                        />
+                    </div>
+                    <div class="form-title">ĐƠN DỰ TUYỂN</div>
+                    <div class="apply-info">
+                        <div>
+                            Đơn vị dự tuyển:
+                            <span style="font-weight: normal"
+                                >Chi nhánh Tân Định</span
+                            >
+                        </div>
+                        <div>
+                            Vị trí dự tuyển:
+                            <span style="font-weight: normal"
+                                >Chuyên viên Khách hàng</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THÔNG TIN CÁ NHÂN -->
+            <div class="section-title">THÔNG TIN CÁ NHÂN:</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <span class="label">Họ và tên:</span>
+                    <span class="value">VÕ THỊ LAN VY</span>
+                </div>
+                <div class="info-row checkbox-group">
+                    <span class="label">Giới tính:</span>
+                    <span>☐ Nam</span>
+                    <span>☑ Nữ</span>
+                </div>
+
+                <div
+                    class="info-row-full"
+                    style="display: flex; gap: 20px; align-items: baseline"
+                >
+                    <div style="white-space: nowrap">
+                        <span class="label">Số CMTND/CCCD:</span>
+                        <span class="value">083300013879</span>
+                    </div>
+                    <div style="white-space: nowrap">
+                        <span class="label">Ngày cấp:</span>
+                        <span class="value">09/04/2025</span>
+                    </div>
+                    <div>
+                        <span class="label">Nơi cấp:</span>
+                        <span class="value">BỘ CÔNG AN</span>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">Ngày sinh:</span>
+                    <span class="value">08/07/2000</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Nơi sinh:</span>
+                    <span class="value">Bến Tre</span>
+                </div>
+
+                <div class="info-row-full">
+                    <span class="label">Nơi ở hiện nay:</span>
+                    <span class="value">Phước Thái, Long Thành, Đồng Nai</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">ĐT di động:</span>
+                    <span class="value">0375137185</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Email:</span>
+                    <span class="value">vothilanvy0807@gmail.com</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">Chiều cao:</span>
+                    <span class="value">168cm</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Cân nặng:</span>
+                    <span class="value">56kg</span>
+                </div>
+
+                <div
+                    class="info-row-full"
+                    style="display: flex; gap: 20px; align-items: baseline"
+                >
+                    <div style="white-space: nowrap">
+                        <span class="label"
+                            >Người liên hệ khẩn cấp khi cần:</span
+                        >
+                        <span class="value">Lê Thanh Tùng</span>
+                    </div>
+                    <div style="white-space: nowrap">
+                        <span class="label">Quan hệ:</span>
+                        <span class="value">Bạn bè</span>
+                    </div>
+                    <div style="white-space: nowrap">
+                        <span class="label">Số điện thoại:</span>
+                        <span class="value">0981311300</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRÌNH ĐỘ ĐÀO TẠO -->
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="7" class="table-section-title">
+                            TRÌNH ĐỘ ĐÀO TẠO (Bao gồm cả cấp PTTH)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="width: 10%">Thời gian bắt đầu</th>
+                        <th style="width: 10%">Thời gian kết thúc</th>
+                        <th style="width: 25%">Trường/Đơn vị đào tạo</th>
+                        <th style="width: 20%">Chuyên ngành</th>
+                        <th style="width: 12%">Hệ đào tạo</th>
+                        <th style="width: 13%">Xếp loại TN</th>
+                        <th style="width: 10%">Điểm phẩy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center">08/2018</td>
+                        <td style="text-align: center">12/2022</td>
+                        <td>Đại học Tài Chính - Marketing</td>
+                        <td>Quản trị kinh doanh</td>
+                        <td style="text-align: center">Chính quy</td>
+                        <td style="text-align: center">Khá</td>
+                        <td style="text-align: center">2.51/4</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">08/2015</td>
+                        <td style="text-align: center">05/2018</td>
+                        <td>THPT Lê Hoài Đôn</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- ĐÀO TẠO NGẮN HẠN -->
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2" class="table-section-title">
+                            ĐÀO TẠO NGẮN HẠN, CHỨNG CHỈ
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td
+                            style="
+                                width: 25%;
+                                font-weight: bold;
+                                vertical-align: middle;
+                            "
+                        >
+                            Ngoại ngữ
+                        </td>
+                        <td style="width: 75%">
+                            <div style="margin-bottom: 6px">
+                                <span class="label">Anh văn:</span>
+                            </div>
+                            <div
+                                style="margin-bottom: 12px; white-space: nowrap"
+                            >
+                                <span class="label">Chứng chỉ:</span>
+                                ☐ A &nbsp;&nbsp; ☐ B &nbsp;&nbsp; ☑ TOEIC (480)
+                                &nbsp;&nbsp; ☐ TOEFL (........) &nbsp;&nbsp; ☐
+                                IELTS (........)
+                            </div>
+                            <div style="display: flex; align-items: flex-end">
+                                <span
+                                    class="label"
+                                    style="
+                                        white-space: nowrap;
+                                        margin-right: 5px;
+                                    "
+                                    >Ngoại ngữ khác:</span
+                                >
+                                <span
+                                    style="
+                                        flex-grow: 1;
+                                        border-bottom: 1px dotted
+                                            var(--text-color);
+                                        margin-bottom: 4px;
+                                    "
+                                ></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; vertical-align: middle">
+                            Tin học
+                        </td>
+                        <td>
+                            ☑ Word &nbsp;&nbsp; ☑ Excel &nbsp;&nbsp; ☑
+                            PowerPoint &nbsp;&nbsp; ☐ Khác: Chứng chỉ MOS 2022
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; vertical-align: middle">
+                            Khóa đào tạo, chứng chỉ khác
+                        </td>
+                        <td>
+                            <div style="display: flex; flex-direction: column">
+                                <div
+                                    style="
+                                        display: flex;
+                                        align-items: flex-end;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            flex-grow: 1;
+                                            border-bottom: 1px dotted
+                                                var(--text-color);
+                                            margin-bottom: 4px;
+                                            height: 1.2em;
+                                        "
+                                    ></span>
+                                </div>
+                                <div
+                                    style="
+                                        display: flex;
+                                        align-items: flex-end;
+                                        margin-bottom: 8px;
+                                    "
+                                >
+                                    <span
+                                        style="
+                                            flex-grow: 1;
+                                            border-bottom: 1px dotted
+                                                var(--text-color);
+                                            margin-bottom: 4px;
+                                            height: 1.2em;
+                                        "
+                                    ></span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: flex-end"
+                                >
+                                    <span
+                                        style="
+                                            flex-grow: 1;
+                                            border-bottom: 1px dotted
+                                                var(--text-color);
+                                            margin-bottom: 4px;
+                                            height: 1.2em;
+                                        "
+                                    ></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- KINH NGHIỆM LÀM VIỆC -->
+            <div class="page-break"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="4" class="table-section-title">
+                            KINH NGHIỆM LÀM VIỆC: (Bắt đầu từ công việc gần đây
+                            nhất)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="width: 15%">Thời gian</th>
+                        <th style="width: 25%">Tên công ty</th>
+                        <th style="width: 20%">Vị trí/Chức vụ</th>
+                        <th style="width: 40%">
+                            Nhiệm vụ chính (tối đa 3 nhiệm vụ)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center">
+                            Từ: 24/12/2024<br />Đến: Hiện tại
+                        </td>
+                        <td>
+                            Ngân hàng TMCP Ngoại thương VN (Vietcombank) - CN
+                            Nhơn Trạch
+                        </td>
+                        <td style="text-align: center; font-weight: bold">
+                            Chuyên viên tư vấn - BPO
+                        </td>
+                        <td>
+                            <ul class="task-list">
+                                <li>
+                                    Tư vấn toàn diện giải pháp tài chính (tín
+                                    dụng, huy động) cho KHCN Priority và KHDN
+                                    (SMEs).
+                                </li>
+                                <li>
+                                    Quản lý danh mục khách hàng chuyên sâu, thẩm
+                                    định rủi ro và mở rộng mạng lưới.
+                                </li>
+                                <li>
+                                    Tác nghiệp quầy (mở CIF, eKYC) và đảm nhiệm
+                                    vai trò Thủ quỹ Tổ ATM.
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            Từ: 04/2022<br />Đến: 12/2024
+                        </td>
+                        <td>
+                            Ngân hàng TMCP Ngoại thương VN (Vietcombank) - CN
+                            Nam Sài Gòn
+                        </td>
+                        <td style="text-align: center; font-weight: bold">
+                            Cộng tác viên / Điều phối viên
+                        </td>
+                        <td>
+                            <ul class="task-list">
+                                <li>
+                                    Trực tiếp phân luồng, điều phối khách hàng,
+                                    tối ưu hóa thời gian chờ.
+                                </li>
+                                <li>
+                                    Hướng dẫn khách hàng hoàn thiện hồ sơ và
+                                    giải đáp thắc mắc dịch vụ.
+                                </li>
+                                <li>
+                                    Thực hiện các tác nghiệp hỗ trợ (in sổ phụ
+                                    cho KHDN) đẩy nhanh tốc độ giao dịch.
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            Từ: 01/2022<br />Đến: 04/2022
+                        </td>
+                        <td>CTY TNHH Bảo Hiểm Nhân Thọ Chubb Việt Nam</td>
+                        <td style="text-align: center">Nhân Viên Tuyển Dụng</td>
+                        <td>
+                            <ul class="task-list">
+                                <li>
+                                    Sàng lọc CV, liên hệ ứng viên và thực hiện
+                                    phỏng vấn sơ bộ.
+                                </li>
+                                <li>
+                                    Đánh giá tiềm năng nhân sự để đáp ứng nhu
+                                    cầu tuyển dụng.
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-bottom: 5px">
+                <span class="label">Tình trạng công việc gần nhất:</span>
+                &nbsp;&nbsp;&nbsp;☑ Đang làm&nbsp;&nbsp;&nbsp;&nbsp;☐ Đã chấm
+                dứt
+            </div>
+            <div style="margin-bottom: 20px">
+                <span class="label">Mức lương:</span>
+                <span class="value">Theo quy định</span>
+            </div>
+
+            <!-- THÀNH TÍCH, HOẠT ĐỘNG -->
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2" class="table-section-title">
+                            THÀNH TÍCH, PHẦN THƯỞNG, HOẠT ĐỘNG XÃ HỘI
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="width: 85%">
+                            Nội dung (Thành tích/ Phần thưởng/ Hoạt động)
+                        </th>
+                        <th style="width: 15%">Năm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Cán bộ tiêu biểu "Thi đua Digibiz" - Vietcombank CN
+                            Nhơn Trạch
+                        </td>
+                        <td style="text-align: center">2025</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cán bộ tiêu biểu phát triển "Khách hàng SMEs HĐV
+                            mới" - Vietcombank CN Nhơn Trạch
+                        </td>
+                        <td style="text-align: center">2025</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Tham gia "Giải chạy 60 năm Vietcombank - Vạn trái
+                            tim - Một niềm tin"
+                        </td>
+                        <td style="text-align: center">2023</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Tham gia cuộc thi "Tiếp sức vũ trang" do trường Đại
+                            học Tài chính - Marketing tổ chức
+                        </td>
+                        <td style="text-align: center">2019</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- QUAN HỆ GIA ĐÌNH -->
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="6" class="table-section-title">
+                            QUAN HỆ GIA ĐÌNH: (Bố mẹ, anh chị em ruột, vợ,
+                            chồng)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="width: 5%">STT</th>
+                        <th style="width: 25%">Họ và tên</th>
+                        <th style="width: 15%">Quan hệ</th>
+                        <th style="width: 10%">Năm sinh</th>
+                        <th style="width: 20%">Nghề nghiệp</th>
+                        <th style="width: 25%">Nơi ở (Tỉnh, TP)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center">1</td>
+                        <td>Võ Văn I</td>
+                        <td style="text-align: center">Cha</td>
+                        <td style="text-align: center">1961</td>
+                        <td>Đã mất</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">2</td>
+                        <td>Nguyễn Thị Hạnh</td>
+                        <td style="text-align: center">Mẹ</td>
+                        <td style="text-align: center">1964</td>
+                        <td>Tiểu thương</td>
+                        <td>Bến Tre</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">3</td>
+                        <td>Võ Thị Phi Lăng</td>
+                        <td style="text-align: center">Chị</td>
+                        <td style="text-align: center">1987</td>
+                        <td>Tiểu thương</td>
+                        <td>Bến Tre</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- THÔNG TIN THAM KHẢO -->
+            <div class="page-break"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="5" class="table-section-title">
+                            THÔNG TIN THAM KHẢO
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="width: 5%">STT</th>
+                        <th style="width: 25%">Họ và tên</th>
+                        <th style="width: 15%">Quan hệ</th>
+                        <th style="width: 30%">Chức vụ/Nơi làm việc</th>
+                        <th style="width: 25%">
+                            Số điện thoại / email liên hệ
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center">1</td>
+                        <td>Dương Ái My</td>
+                        <td style="text-align: center">
+                            Chuyên viên tư vấn - BPO
+                        </td>
+                        <td>
+                            Ngân hàng TMCP Ngoại thương VN (Vietcombank) - CN
+                            Nhơn Trạch
+                        </td>
+                        <td style="text-align: center">0931969110</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Nhóm Lời Cam Đoan và Chữ Ký lại với nhau -->
+            <div class="keep-together">
+                <div style="margin-top: 15px; text-align: justify">
+                    <em
+                        >Tôi xin cam đoan những thông tin cung cấp trên đây là
+                        chính xác và đầy đủ. Nếu có bất kỳ sự sai lệch nào, tôi
+                        xin chịu hoàn toàn trách nhiệm trước Ngân hàng.</em
+                    >
+                </div>
+
+                <!-- CHỮ KÝ -->
+                <div class="signature-section">
+                    <div class="signature-box">
+                        <div>Ngày ..... tháng ..... năm 202...</div>
+                        <div style="font-weight: bold; margin-top: 5px">
+                            Người làm đơn
+                        </div>
+                        <img
+                            class="signature-img"
+                            src="https://raw.githubusercontent.com/lethanhtung1303/vothilanvy/refs/heads/main/_signature.png"
+                            alt="Chữ ký Võ Thị Lan Vy"
+                            onerror="
+                                this.src =
+                                    'https://placehold.co/170x170?text=Signature'
+                            "
+                        />
+                        <div class="signature-name">Võ Thị Lan Vy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

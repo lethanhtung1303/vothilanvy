@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Thư Ứng Tuyển - Võ Thị Lan Vy - Vietcombank</title>
+
+        <!-- Import Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=Great+Vibes&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            /* CSS Reset & Cơ bản */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: #f0f2f5;
+                font-family: 'Inter', sans-serif;
+                color: #333333;
+                line-height: 1.5;
+                display: flex;
+                justify-content: center;
+                padding: 2rem 0;
+            }
+
+            /* Định dạng trang A4 */
+            .a4-page {
+                width: 210mm;
+                height: 297mm;
+                background-color: #ffffff;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* --- PHẦN HEADER --- */
+            header {
+                background-color: #0b5e32;
+                color: #ffffff;
+                padding: 25px 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+                position: relative;
+            }
+
+            header::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 5px;
+                background: linear-gradient(
+                    90deg,
+                    #7ab800 0%,
+                    #008c3a 50%,
+                    #0b5e32 100%
+                );
+            }
+
+            .avatar-wrapper {
+                width: 120px;
+                height: 160px;
+                background-color: #ffffff;
+                border-top-left-radius: 90px;
+                border-top-right-radius: 90px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                padding: 5px;
+            }
+
+            .avatar-inner {
+                width: 100%;
+                height: 100%;
+                border-top-left-radius: 85px;
+                border-top-right-radius: 85px;
+                overflow: hidden;
+                background-color: #e9ecef;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+            }
+
+            .avatar-inner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
+            }
+
+            .header-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .candidate-name {
+                font-family: 'Inter', sans-serif;
+                font-size: 32px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                line-height: 1.1;
+                text-transform: uppercase;
+                margin-bottom: 2px;
+            }
+
+            .candidate-name span {
+                display: inline-block;
+                margin: 0 4px;
+            }
+
+            .contact-list {
+                list-style: none;
+                margin-top: 4px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .contact-list li {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 13.5px;
+                font-weight: 300;
+            }
+
+            .contact-icon {
+                width: 22px;
+                height: 22px;
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 10px;
+                flex-shrink: 0;
+            }
+
+            .contact-icon svg {
+                width: 11px;
+                height: 11px;
+                fill: currentColor;
+            }
+
+            /* --- PHẦN NỘI DUNG THƯ --- */
+            main {
+                padding: 25px 60px 40px;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .salutation {
+                font-weight: 600;
+                font-size: 14.5px;
+                margin-bottom: 15px;
+                line-height: 1.5;
+            }
+
+            .vcb-text {
+                color: #008c3a;
+                font-weight: 600;
+            }
+
+            .cover-letter-body {
+                text-align: justify;
+                font-size: 14.5px;
+            }
+
+            .cover-letter-body p {
+                margin-bottom: 10px;
+            }
+
+            .cover-letter-body p:last-child {
+                margin-bottom: 0;
+            }
+
+            /* --- PHẦN KẾT & CHỮ KÝ --- */
+            .sign-off-section {
+                margin-top: 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-self: flex-end;
+                margin-right: 15px;
+            }
+
+            .sign-off-text {
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+
+            .signature {
+                margin: 0;
+            }
+
+            .signature img {
+                height: 75px;
+                object-fit: contain;
+            }
+
+            .signature-name {
+                font-family: 'Dancing Script', cursive;
+                font-weight: 700;
+                font-size: 26px;
+                color: #0b5e32;
+            }
+
+            /* Footer trang trí */
+            footer {
+                height: 30px;
+                background-color: #f8f9fa;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+            }
+            footer::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(
+                    90deg,
+                    transparent 0%,
+                    #7ab800 80%,
+                    #008c3a 100%
+                );
+                opacity: 0.5;
+            }
+
+            /* --- CẤU HÌNH KHI IN (Ctrl + P) --- */
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 0;
+                }
+                body {
+                    background-color: #ffffff;
+                    padding: 0;
+                    margin: 0;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+                .a4-page {
+                    box-shadow: none;
+                    width: 210mm;
+                    height: 297mm;
+                    page-break-after: avoid;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="a4-page">
+            <header>
+                <div class="avatar-wrapper">
+                    <div class="avatar-inner">
+                        <!-- Đổi lại link ảnh thật của bạn ở đây -->
+                        <img
+                            src="https://raw.githubusercontent.com/lethanhtung1303/vothilanvy/refs/heads/main/_avt.jpg"
+                            alt="Ảnh đại diện"
+                            onerror="
+                                this.src =
+                                    'https://placehold.co/170x170?text=Avatar'
+                            "
+                        />
+                    </div>
+                </div>
+
+                <div class="header-info">
+                    <h1 class="candidate-name">
+                        <span>VÕ THỊ</span>
+                        <span>LAN VY</span>
+                    </h1>
+
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                >
+                                    <path
+                                        d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"
+                                    />
+                                </svg>
+                            </span>
+                            0375137185
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512 512"
+                                >
+                                    <path
+                                        d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
+                                    />
+                                </svg>
+                            </span>
+                            vothilanvy0807@gmail.com
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 320 512"
+                                >
+                                    <path
+                                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                                    />
+                                </svg>
+                            </span>
+                            fb.com/vt.lanvy
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <!-- NỘI DUNG -->
+            <main>
+                <div class="salutation">
+                    Kính gửi: Ban Giám đốc và Phòng Hành chính - Nhân sự Ngân
+                    hàng TMCP Ngoại thương Việt Nam (<span class="vcb-text"
+                        >Vietcombank</span
+                    >) - Khu vực TP.HCM,
+                </div>
+
+                <div class="cover-letter-body">
+                    <p>
+                        Tôi tên là Võ Thị Lan Vy. Thông qua cổng thông tin tuyển
+                        dụng, tôi được biết Quý Ngân hàng đang có nhu cầu tuyển
+                        dụng vị trí Chuyên viên Kế toán/Giao dịch viên tại khu
+                        vực TP.HCM. Với định hướng phát triển nghề nghiệp lâu
+                        dài tại
+                        <span class="vcb-text">Vietcombank</span>, tôi viết thư
+                        này để bày tỏ mong muốn được thử sức và đóng góp năng
+                        lực tại đơn vị.
+                    </p>
+
+                    <p>
+                        Trong hơn 3 năm đồng hành cùng
+                        <span class="vcb-text">Vietcombank</span> qua các vị trí
+                        Điều phối viên và Chuyên viên tư vấn (PBO), tôi không
+                        chỉ thấu hiểu sâu sắc văn hóa phục vụ khách hàng mà còn
+                        tích lũy được nhiều kinh nghiệm thực tiễn. Việc trực
+                        tiếp <b>tác nghiệp tại quầy</b> (mở CIF, eKYC) và đảm
+                        nhận vai trò <b>Thủ quỹ Tổ ATM</b> đã rèn luyện cho tôi
+                        sự cẩn trọng, chính xác tuyệt đối trong nghiệp vụ kế
+                        toán - tiền tệ. Kết hợp cùng khả năng tư vấn, bán chéo
+                        (cross-selling) linh hoạt, tôi đã vinh dự đạt các danh
+                        hiệu <i>Cán bộ tiêu biểu thi đua Digibiz (2025)</i> và
+                        <i
+                            >Cán bộ tiêu biểu phát triển Khách hàng SMEs HĐV
+                            mới</i
+                        >.
+                    </p>
+
+                    <p>
+                        Quyết định ứng tuyển vào vị trí Kế toán/Giao dịch viên
+                        tại khu vực TP.HCM không chỉ là khát vọng mở rộng chuyên
+                        môn nghiệp vụ, mà còn xuất phát từ mong muốn chuyển công
+                        tác để rút ngắn khoảng cách địa lý với quê nhà. Tôi tin
+                        rằng việc an cư, ổn định cuộc sống cá nhân sẽ là tiền đề
+                        vững chắc để tôi toàn tâm toàn ý cống hiến dài hạn cho
+                        tổ chức.
+                    </p>
+
+                    <p>
+                        Tôi hoàn toàn tự tin nền tảng nghiệp vụ vững vàng và sự
+                        nhiệt huyết của mình sẽ giúp tôi bắt nhịp nhanh chóng
+                        với vai trò mới. Hơn cả một công việc, tôi mang trong
+                        mình khao khát mãnh liệt được tiếp tục gắn bó, cống hiến
+                        và phát triển cùng mái nhà chung
+                        <span class="vcb-text">Vietcombank</span>.
+                    </p>
+
+                    <p>
+                        Tôi rất mong có cơ hội tham gia phỏng vấn để trao đổi
+                        chi tiết hơn về sự phù hợp của bản thân đối với vị trí
+                        này.
+                    </p>
+                </div>
+
+                <!-- PHẦN CHỮ KÝ -->
+                <div class="sign-off-section">
+                    <div class="sign-off-text">Trân trọng cảm ơn,</div>
+                    <div class="signature">
+                        <img
+                            src="https://raw.githubusercontent.com/lethanhtung1303/vothilanvy/refs/heads/main/_signature.png"
+                            alt="Chữ ký Võ Thị Lan Vy"
+                            onerror="
+                                this.src =
+                                    'https://placehold.co/170x170?text=Signature'
+                            "
+                        />
+                    </div>
+                    <div class="signature-name">Võ Thị Lan Vy</div>
+                </div>
+            </main>
+
+            <!-- FOOTER TRANG TRÍ -->
+            <footer></footer>
+        </div>
+    </body>
+</html>
